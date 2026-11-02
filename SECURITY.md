@@ -1,39 +1,42 @@
-# Política de segurança
+# Security Policy
 
-## Escopo
+[Português](./SECURITY.pt-BR.md) | **English**
 
-O IronDesk é uma **aplicação demonstrativa** que roda inteiramente no navegador.
+## Scope
 
-- Não possui backend, banco de dados remoto ou autenticação real.
-- Não processa pagamentos, não coleta dados de cartão e não armazena informação financeira sensível.
-- Todos os dados exibidos são fictícios e persistem apenas no `LocalStorage` do navegador de quem
-  acessa.
+IronDesk is a **demo application** that runs entirely in the browser.
 
-Ainda assim, falhas reais merecem atenção — principalmente as que permitirem execução de código no
-contexto da página (`XSS`), exposição de dados entre usuários ou comprometimento de dependências.
+- It has no backend, remote database or real authentication.
+- It does not process payments, does not collect card data and does not store sensitive financial
+  information.
+- All displayed data is fictional and persists only in the `LocalStorage` of the browser of whoever
+  opens the app.
 
-## Como reportar
+Even so, real flaws deserve attention — especially those that would allow code execution in the page
+context (`XSS`), data exposure between users or compromise of dependencies.
 
-**Não abra uma issue pública.** Envie um e-mail para **kaique.g.dias14@gmail.com** com:
+## How to report
 
-- descrição do problema e impacto potencial;
-- passos para reproduzir ou prova de conceito;
-- navegador e sistema operacional;
-- sugestão de correção, se houver.
+**Do not open a public issue.** Send an email to **kaique.g.dias14@gmail.com** with:
 
-Retorno inicial em até **7 dias**. Você será avisado quando a correção for publicada, e o crédito pelo
-reporte é dado no aviso — se você quiser.
+- a description of the problem and potential impact;
+- steps to reproduce or a proof of concept;
+- browser and operating system;
+- a suggested fix, if you have one.
 
-## Dependências
+Initial response within **7 days**. You will be notified when the fix ships, and credit for the report
+is given in the advisory — if you want it.
 
-As dependências são verificadas com:
+## Dependencies
+
+Dependencies are checked with:
 
 ```bash
 npm audit
 ```
 
-Relate também qualquer pacote suspeito, abandonado ou comprometido que tenha sido adicionado.
+Also report any suspicious, abandoned or compromised package that has been added.
 
-## Versões suportadas
+## Supported versions
 
-Apenas a branch `main` recebe correções de segurança. Tags antigas são referências históricas.
+Only the `main` branch receives security fixes. Older tags are historical references.

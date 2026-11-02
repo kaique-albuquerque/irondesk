@@ -1,25 +1,25 @@
-# Contribuindo com o IronDesk
+# Contributing to IronDesk
 
-Obrigado pelo interesse. Este documento descreve o fluxo de trabalho do repositório — leia antes de
-abrir uma issue ou um pull request.
+[Português](./CONTRIBUTING.pt-BR.md) | **English**
 
-## Antes de começar
+Thanks for your interest. This document describes the repository workflow — read it before opening an
+issue or a pull request.
 
-- O IronDesk é um projeto de portfólio. Ele é mantido por uma pessoa, então revisões podem levar
-  alguns dias.
-- **A branch `main` é protegida.** Nenhuma alteração entra nela por push direto: todo trabalho passa
-  por um pull request. Isso vale inclusive para quem mantém o projeto.
-- Para mudanças grandes (nova funcionalidade, refatoração de arquitetura, troca de dependência
-  principal), **abra uma issue primeiro**. Assim evitamos que você implemente algo que não será
-  aceito.
+## Before you start
 
-## Pré-requisitos
+- IronDesk is a portfolio project. It is maintained by one person, so reviews may take a few days.
+- **The `main` branch is protected.** Nothing gets into it through a direct push: all work goes
+  through a pull request. This applies to the maintainer too.
+- For large changes (new feature, architecture refactor, swapping a core dependency), **open an issue
+  first**. That way you avoid implementing something that will not be accepted.
 
-- Node.js 20 ou superior
-- npm 10 ou superior
+## Prerequisites
+
+- Node.js 20 or newer
+- npm 10 or newer
 - Git
 
-## Configurando o ambiente
+## Setting up the environment
 
 ```bash
 git clone https://github.com/kaique-albuquerque/irondesk.git
@@ -28,63 +28,63 @@ npm install
 npm run dev
 ```
 
-A aplicação sobe em [http://localhost:5173](http://localhost:5173).
+The app starts at [http://localhost:5173](http://localhost:5173).
 
-## Fluxo de trabalho
+## Workflow
 
-1. **Sincronize a `main`**
+1. **Sync `main`**
 
    ```bash
    git checkout main
    git pull origin main
    ```
 
-2. **Crie uma branch a partir da `main`.** Use um prefixo que indique a natureza do trabalho:
+2. **Create a branch off `main`.** Use a prefix that signals the nature of the work:
 
-   | Prefixo | Uso | Exemplo |
+   | Prefix | Use | Example |
    | --- | --- | --- |
-   | `feat/` | nova funcionalidade | `feat/exportacao-excel` |
-   | `fix/` | correção de bug | `fix/checkin-duplicado` |
-   | `docs/` | documentação | `docs/guia-deploy` |
-   | `refactor/` | refatoração sem mudança de comportamento | `refactor/servico-pagamentos` |
-   | `chore/` | configuração, dependências, build | `chore/atualiza-vite` |
+   | `feat/` | new feature | `feat/excel-export` |
+   | `fix/` | bug fix | `fix/duplicate-checkin` |
+   | `docs/` | documentation | `docs/deploy-guide` |
+   | `refactor/` | refactor with no behavior change | `refactor/payments-service` |
+   | `chore/` | config, dependencies, build | `chore/update-vite` |
 
    ```bash
-   git checkout -b feat/minha-contribuicao
+   git checkout -b feat/my-contribution
    ```
 
-3. **Implemente, validando localmente** (veja [Verificação obrigatória](#verificação-obrigatória)).
+3. **Implement, validating locally** (see [Mandatory verification](#mandatory-verification)).
 
-4. **Faça commits pequenos e com mensagem clara**, no padrão
-   [Conventional Commits](https://www.conventionalcommits.org/pt-br/):
+4. **Make small commits with clear messages**, following
+   [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/):
 
    ```text
-   feat(financeiro): permite estornar pagamento parcial
+   feat(finance): allow partial payment refund
 
-   Adiciona a ação de estorno com valor informado e registra o
-   histórico da alteração na cobrança original.
+   Adds a refund action with an informed amount and records the
+   change history on the original charge.
    ```
 
-5. **Envie a branch e abra o pull request**
+5. **Push the branch and open the pull request**
 
    ```bash
-   git push -u origin feat/minha-contribuicao
+   git push -u origin feat/my-contribution
    ```
 
-   O template do PR aparece automaticamente. Preencha o contexto, o que mudou e como você testou.
+   The PR template appears automatically. Fill in the context, what changed and how you tested it.
 
-## Verificação obrigatória
+## Mandatory verification
 
-Todo pull request precisa passar nestas três verificações antes de ser mesclado:
+Every pull request must pass these three checks before it can be merged:
 
 ```bash
-npm run typecheck    # TypeScript sem erros
-npm run build        # build de produção funcional
+npm run typecheck    # TypeScript with no errors
+npm run build        # working production build
 ```
 
-E na revisão manual:
+And on manual review:
 
-- **Nenhum arquivo de código pode passar de 150 linhas.** É uma regra do projeto. Confira com:
+- **No code file may exceed 150 lines.** It is a project rule. Check with:
 
   ```powershell
   Get-ChildItem -Path src -Recurse -Include *.ts,*.tsx |
@@ -92,77 +92,75 @@ E na revisão manual:
     Sort-Object Lines -Descending | Select-Object -First 10
   ```
 
-- **Nenhum `any` explícito.** Tudo tipado por interfaces de domínio.
-- **Nenhum botão morto.** Se aparece na interface, funciona — ou não aparece.
-- **Console limpo.** Navegue pelo fluxo alterado e confirme que não há erros no console do navegador.
+- **No explicit `any`.** Everything is typed by domain interfaces.
+- **No dead buttons.** If it shows up in the UI, it works — or it does not show up.
+- **Clean console.** Walk through the changed flow and confirm there are no browser console errors.
 
-## Padrões de código
+## Code standards
 
-### Estrutura em camadas
+### Layered structure
 
-Respeite a direção das dependências. A interface **nunca** acessa o `LocalStorage` diretamente:
+Respect the dependency direction. The UI **never** accesses `LocalStorage` directly:
 
 ```text
 pages → hooks → services/api → services/mock → services/storage → LocalStorage
 ```
 
-- **Regra de negócio** mora em `src/services/api/*.service.ts`.
-- **Componente** não calcula regra de negócio; recebe dados prontos.
-- **Validação de formulário** mora em `src/schemas/*.schema.ts` (Zod).
-- **Acesso a dados** passa por `services/storage`; nenhum componente lê `localStorage`.
+- **Business rules** live in `src/services/api/*.service.ts`.
+- A **component** does not compute business rules; it receives ready data.
+- **Form validation** lives in `src/schemas/*.schema.ts` (Zod).
+- **Data access** goes through `services/storage`; no component reads `localStorage`.
 
-### Convenções
+### Conventions
 
-- Componentes: `PascalCase.tsx`, uma responsabilidade por arquivo.
-- Serviços, hooks e utilitários: `camelCase.ts` (`students.service.ts`, `useAsyncData.ts`).
-- Interfaces: `*.interface.ts`, sufixo `View` para tipos derivados com dados agregados.
-- Textos da interface em **português do Brasil**.
-- Estilo com Tailwind e os tokens do design system (`bg-surface`, `text-ink`, `text-muted`,
-  `border-line`, `text-accent-ink`...). Não introduza cores hexadecimais soltas — use os tokens de
+- Components: `PascalCase.tsx`, one responsibility per file.
+- Services, hooks and utilities: `camelCase.ts` (`students.service.ts`, `useAsyncData.ts`).
+- Interfaces: `*.interface.ts`, `View` suffix for derived types with aggregated data.
+- UI copy in **Brazilian Portuguese**.
+- Styling with Tailwind and the design system tokens (`bg-surface`, `text-ink`, `text-muted`,
+  `border-line`, `text-accent-ink`...). Do not introduce loose hex colors — use the tokens from
   `src/styles/index.css`.
-- Antes de criar um componente de UI, verifique se o primitivo já existe em `src/components/ui`.
+- Before creating a UI component, check whether the primitive already exists in `src/components/ui`.
 
 ### Commits
 
-- Um assunto por commit.
-- Mensagem no imperativo, em português: `corrige`, `adiciona`, `remove`, `ajusta`.
-- Referencie a issue quando existir: `closes #12`.
+- One subject per commit.
+- Imperative message, in Portuguese: `corrige`, `adiciona`, `remove`, `ajusta`.
+- Reference the issue when there is one: `closes #12`.
 
-## Abrindo uma issue
+## Opening an issue
 
-Use os templates disponíveis em **Issues → New issue**:
+Use the templates available under **Issues → New issue**:
 
-- **Bug** — comportamento inesperado, com passos para reproduzir.
-- **Sugestão de funcionalidade** — problema que a mudança resolve, antes da solução proposta.
+- **Bug** — unexpected behavior, with steps to reproduce.
+- **Feature request** — the problem the change solves, before the proposed solution.
 
-Inclua sempre:
+Always include:
 
-- o que você esperava e o que aconteceu;
-- passos para reproduzir;
-- navegador e sistema;
-- print ou gravação de tela quando for visual.
+- what you expected and what happened;
+- steps to reproduce;
+- browser and operating system;
+- screenshot or screen recording when it is visual.
 
-## Revisão do pull request
+## Pull request review
 
-- O mantenedor pode pedir ajustes, dividir a mudança em partes menores ou recusar a contribuição se
-  ela fugir do escopo do projeto.
-- PRs que quebram `typecheck`/`build`, que introduzem `any` ou que ultrapassam 150 linhas por arquivo
-  não são mesclados.
-- Ao mesclar, a branch é removida. Sincronize sua `main` antes de começar o próximo trabalho.
+- The maintainer may request changes, split the work into smaller parts or decline the contribution if
+  it falls outside the project scope.
+- PRs that break `typecheck`/`build`, introduce `any` or exceed 150 lines per file are not merged.
+- On merge the branch is deleted. Sync your `main` before starting the next piece of work.
 
-## Escopo do projeto
+## Project scope
 
-O IronDesk é deliberadamente uma demonstração **sem backend**. Contribuições que adicionem servidor,
-banco de dados, autenticação real ou cobrança real estão fora do escopo deste repositório — o
-[README](./README.md#12-o-que-seria-necessário-para-produção) descreve o que seria necessário para
-produção.
+IronDesk is deliberately a **backend-free** demo. Contributions that add a server, database, real
+authentication or real billing are outside the scope of this repository — the
+[README](./README.md#12-what-production-would-require) describes what production would require.
 
-## Segurança e dados
+## Security and data
 
-- **Nunca** faça commit de segredos, tokens, `.env` ou dados pessoais reais.
-- Todos os dados do projeto são fictícios. Não insira informações de pessoas reais nos seeds.
-- Encontrou uma vulnerabilidade? Veja [SECURITY.md](./SECURITY.md) — não abra issue pública.
+- **Never** commit secrets, tokens, `.env` files or real personal data.
+- All project data is fictional. Do not put real people's information into the seeds.
+- Found a vulnerability? See [SECURITY.md](./SECURITY.md) — do not open a public issue.
 
-## Código de conduta
+## Code of conduct
 
-Ao participar, você concorda com o [Código de Conduta](./CODE_OF_CONDUCT.md).
+By taking part, you agree to the [Code of Conduct](./CODE_OF_CONDUCT.md).
