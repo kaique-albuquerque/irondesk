@@ -1,9 +1,9 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Dúvida sobre o projeto
+  - name: Project question
     url: https://github.com/kaique-albuquerque/irondesk/discussions
-    about: Perguntas de uso, ideias em aberto e conversa geral.
+    about: Usage questions, open ideas and general conversation.
 
-  - name: Vulnerabilidade de segurança
+  - name: Security vulnerability
     url: https://github.com/kaique-albuquerque/irondesk/blob/main/SECURITY.md
-    about: Não abra issue pública para falhas de segurança. Siga a política de reporte.
+    about: Do not open a public issue for security flaws. Follow the reporting policy.

@@ -1,74 +1,75 @@
 # IronDesk
 
-Aplicação web de gestão para academias e estúdios de treino. O IronDesk reúne a operação
-administrativa de uma academia — alunos, planos, matrículas, cobranças, frequência, fichas de
-treino, avaliações físicas, equipe e relatórios — em um único painel, com dados de demonstração
-realistas e persistidos no navegador.
+[Português](./README.pt-BR.md) | **English**
 
-É um projeto de portfólio: front end completo, tipado de ponta a ponta, com regras de negócio
-reais o suficiente para serem testadas sem nenhum backend.
+A web management application for gyms and training studios. IronDesk brings a gym's administrative
+operation — students, plans, enrollments, billing, attendance, workout programs, physical
+assessments, staff and reports — into a single dashboard, with realistic demo data persisted in the
+browser.
+
+It is a portfolio project: a complete front end, typed end to end, with business rules real enough to
+be exercised without any backend.
 
 ---
 
-## 1. Problema
+## 1. Problem
 
-Academias de pequeno e médio porte normalmente controlam a operação com uma mistura de planilhas,
-cadernos de treino, aplicativos de mensagem e sistemas de cobrança desconectados. O resultado é
-previsível:
+Small and mid-sized gyms usually run their operation with a mix of spreadsheets, paper workout logs,
+messaging apps and disconnected billing systems. The outcome is predictable:
 
-- matrículas vencidas que continuam treinando sem que ninguém perceba;
-- inadimplência sem visão consolidada de quanto foi pago, atrasado ou perdido;
-- fichas de treino em papel ou em conversas de WhatsApp, sem histórico por aluno;
-- nenhuma visão de frequência, então a evasão só aparece quando o aluno já saiu;
-- relatórios montados manualmente no fim do mês.
+- expired enrollments that keep training without anyone noticing;
+- delinquency with no consolidated view of what was paid, late or lost;
+- workout programs on paper or in WhatsApp threads, with no history per student;
+- no attendance visibility, so churn only surfaces after the student has already left;
+- reports assembled by hand at the end of every month.
 
-## 2. Objetivo da solução
+## 2. Solution goals
 
-Centralizar essa operação em um painel único, com as regras de negócio do domínio explícitas no
-código:
+Centralize that operation in a single dashboard, with the domain's business rules made explicit in
+the code:
 
-- **Financeiro derivado**, não digitado: o status de uma cobrança (pago, pendente, atrasado) é
-  calculado a partir das datas e do valor recebido, nunca inventado manualmente.
-- **Situação da matrícula** calculada por vigência, plano e pendências financeiras.
-- **Histórico por aluno**: matrículas, pagamentos, treinos, avaliações e check-ins acessíveis em uma
-  única tela.
-- **Indicadores de gestão**: receita, alunos ativos, frequência, retenção e distribuição por plano.
+- **Derived finance**, never typed in: a charge's status (paid, pending, overdue) is computed from
+  dates and the amount received, never invented by hand.
+- **Enrollment status** computed from validity window, plan and outstanding payments.
+- **History per student**: enrollments, payments, workouts, assessments and check-ins reachable from
+  a single screen.
+- **Management indicators**: revenue, active students, attendance, retention and plan distribution.
 
-## 3. Principais funcionalidades
+## 3. Core features
 
-| Módulo | O que faz |
+| Module | What it does |
 | --- | --- |
-| Dashboard | KPIs de receita, alunos ativos, check-ins e taxa de retenção, gráficos de evolução mensal, distribuição por plano e listas de atenção (atrasos, vencimentos, avaliações) |
-| Alunos | CRUD completo, filtros por status/objetivo, busca com debounce, página de detalhe com perfil e seis abas históricas |
-| Planos | CRUD de planos mensais, trimestrais, semestrais e anuais com preço, duração, benefícios e contagem de alunos vinculados |
-| Matrículas | Criação, renovação, troca de plano e cancelamento, com encerramento das cobranças futuras |
-| Financeiro | Receitas e despesas, baixa de pagamentos, estorno, filtros por período e situação, resumo de caixa |
-| Frequência | Check-in e check-out com permanência calculada, histórico por aluno e visão diária |
-| Treinos | Fichas por aluno com exercícios (séries, repetições, carga, descanso, grupo muscular), validade e professor responsável |
-| Avaliações | Peso, altura, IMC calculado, percentual de gordura, medidas e comparativo com a avaliação anterior |
-| Relatórios | Séries de receita, recebíveis, distribuição por plano e método de pagamento, alunos mais assíduos e exportação CSV |
-| Equipe | CRUD de colaboradores com cargo, status, contato e data de admissão |
-| Integrações | Catálogo de integrações (gateway, catraca, e-mail, WhatsApp, contabilidade) com conexão/desconexão persistida |
-| Configurações | Dados da academia, regras operacionais, preferência de tema e restauração dos dados de demonstração |
+| Dashboard | Revenue, active student, check-in and retention KPIs, monthly trend charts, plan distribution and attention lists (overdue, expiring, assessments) |
+| Students | Full CRUD, filters by status/goal, debounced search, detail page with profile and six history tabs |
+| Plans | CRUD for monthly, quarterly, semi-annual and annual plans with price, duration, benefits and linked student count |
+| Enrollments | Creation, renewal, plan change and cancellation, closing out future charges |
+| Finance | Income and expenses, payment settlement, refunds, filters by period and status, cash summary |
+| Attendance | Check-in and check-out with computed duration, per-student history and daily view |
+| Workouts | Programs per student with exercises (sets, reps, load, rest, muscle group), validity and supervising trainer |
+| Assessments | Weight, height, computed BMI, body fat percentage, measurements and comparison against the previous assessment |
+| Reports | Revenue series, receivables, distribution by plan and payment method, most frequent students and CSV export |
+| Team | Staff CRUD with role, status, contact and hire date |
+| Integrations | Integration catalog (gateway, turnstile, email, WhatsApp, accounting) with persisted connect/disconnect |
+| Settings | Gym details, operational rules, theme preference and demo data restore |
 
-Transversalmente: tema escuro (padrão) e claro, busca global, central de notificações, toasts,
-estados de carregamento, estados vazios, confirmação em ações destrutivas e layout responsivo.
+Across the app: dark (default) and light themes, global search, notification center, toasts, loading
+states, empty states, confirmation on destructive actions and a responsive layout.
 
-## 4. Tecnologias
+## 4. Tech stack
 
-- **React 19** + **TypeScript** (strict, sem `any`)
+- **React 19** + **TypeScript** (strict, no `any`)
 - **Vite 6**
-- **Tailwind CSS v4** (tokens em CSS, sem arquivo de configuração JS)
+- **Tailwind CSS v4** (tokens in CSS, no JS config file)
 - **React Router 7**
-- **React Hook Form** + **Zod** para formulários e validação
-- **Recharts** para os gráficos
-- **Lucide React** para ícones
-- **date-fns** para datas
-- **clsx** + **tailwind-merge** para composição de classes
+- **React Hook Form** + **Zod** for forms and validation
+- **Recharts** for charts
+- **Lucide React** for icons
+- **date-fns** for dates
+- **clsx** + **tailwind-merge** for class composition
 
-Nenhuma dependência de servidor, banco de dados ou serviço externo.
+No server, database or external service dependency.
 
-## 5. Arquitetura
+## 5. Architecture
 
 ```mermaid
 flowchart TD
@@ -85,212 +86,213 @@ flowchart TD
   D --> I
 ```
 
-Fluxo de qualquer dado na aplicação:
+How any piece of data flows through the app:
 
-1. A **página** consome um **hook** (`useAsyncData`, `useAsyncAction`).
-2. O hook chama um **serviço de domínio** (`students.service.ts`, `payments.service.ts`, ...).
-3. O serviço aplica as regras do domínio e delega ao **mock** correspondente.
-4. O mock lê e grava através da **camada de storage**.
-5. A **interface nunca toca o LocalStorage diretamente**.
+1. A **page** consumes a **hook** (`useAsyncData`, `useAsyncAction`).
+2. The hook calls a **domain service** (`students.service.ts`, `payments.service.ts`, ...).
+3. The service applies domain rules and delegates to the matching **mock**.
+4. The mock reads and writes through the **storage layer**.
+5. **The UI never touches LocalStorage directly.**
 
-Essa separação é o que permite trocar o mock por uma API REST real sem reescrever nenhum
-componente: basta implementar os mesmos contratos em `services/api`.
+This separation is what lets the mock be swapped for a real REST API without rewriting a single
+component: it is enough to implement the same contracts under `services/api`.
 
-## 6. Estrutura de diretórios
+## 6. Directory structure
 
 ```text
 src/
-├── components/        # UI por domínio + kit de primitivos
+├── components/        # UI by domain + primitive kit
 │   ├── ui/            # Button, Input, Select, Modal, Table, StatCard, Toast...
-│   ├── charts/        # gráficos e legendas
-│   ├── layout/        # AppShell, Sidebar, Topbar, busca global, notificações
-│   ├── students/      # tabela, formulário e painéis da página de detalhe
-│   ├── enrollments/   # toolbar, painel, tabela e modais de matrícula
-│   ├── finance/       # receitas, despesas e formulários
-│   ├── checkins/      # histórico e detalhamento de permanência
-│   ├── workouts/      # card, formulário e editor de exercícios
-│   ├── assessments/   # comparativo e formulário de avaliação
-│   ├── reports/       # KPIs, gráficos, tabelas e toolbar de exportação
-│   ├── team/          # tabela e formulário de colaboradores
-│   ├── integrations/  # card de integração
-│   └── settings/      # formulário de configurações
-├── constants/         # labels, tons, navegação, paleta, dados da empresa
-├── data/              # catálogo de exercícios
+│   ├── charts/        # charts and legends
+│   ├── layout/        # AppShell, Sidebar, Topbar, global search, notifications
+│   ├── students/      # table, form and detail page panels
+│   ├── enrollments/   # toolbar, panel, table and enrollment modals
+│   ├── finance/       # income, expenses and forms
+│   ├── checkins/      # history and duration breakdown
+│   ├── workouts/      # card, form and exercise editor
+│   ├── assessments/   # comparison and assessment form
+│   ├── reports/       # KPIs, charts, tables and export toolbar
+│   ├── team/          # staff table and form
+│   ├── integrations/  # integration card
+│   └── settings/      # settings form
+├── constants/         # labels, tones, navigation, palette, company data
+├── data/              # exercise catalog
 ├── hooks/             # useAsyncData, useAsyncAction, useDebounce, useTheme...
-├── interfaces/        # contratos de domínio
-├── pages/             # uma página por rota
-├── routes/            # árvore de rotas, providers e shell
-├── schemas/           # schemas Zod por formulário
+├── interfaces/        # domain contracts
+├── pages/             # one page per route
+├── routes/            # route tree, providers and shell
+├── schemas/           # Zod schema per form
 ├── services/
-│   ├── api/           # serviços de domínio (regras de negócio)
-│   ├── mock/          # geradores de dados e seed
-│   └── storage/       # acesso ao LocalStorage
-├── styles/            # tokens de design e camadas de componentes
-├── types/             # tipos utilitários
-└── utils/             # datas, moeda, status, CSV, ids, classes
+│   ├── api/           # domain services (business rules)
+│   ├── mock/          # data generators and seed
+│   └── storage/       # LocalStorage access
+├── styles/            # design tokens and component layers
+├── types/             # utility types
+└── utils/             # dates, currency, status, CSV, ids, classes
 ```
 
-Cada arquivo de código tem no máximo **150 linhas** — limite verificado manualmente a cada etapa.
+Every code file is at most **150 lines** — a limit checked at every step.
 
-## 7. Como executar localmente
+## 7. Running locally
 
-Requisitos: **Node.js 20+** e npm.
+Requirements: **Node.js 20+** and npm.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Acesse [http://localhost:5173](http://localhost:5173).
+Open [http://localhost:5173](http://localhost:5173).
 
-Build de produção e pré-visualização:
+Production build and preview:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-Scripts disponíveis:
+Available scripts:
 
-| Script | Descrição |
+| Script | Description |
 | --- | --- |
-| `npm run dev` | Servidor de desenvolvimento na porta 5173 |
-| `npm run build` | Verificação de tipos (`tsc --noEmit`) + build de produção |
-| `npm run preview` | Serve o build de produção |
-| `npm run typecheck` | Apenas a verificação de tipos |
+| `npm run dev` | Development server on port 5173 |
+| `npm run build` | Type check (`tsc --noEmit`) + production build |
+| `npm run preview` | Serves the production build |
+| `npm run typecheck` | Type check only |
 
-## 8. Como funciona o Mock API
+## 8. How the mock API works
 
-- Cada domínio tem um serviço (`services/api/*.service.ts`) com operações assíncronas que retornam
-  `Promise`, simulando latência de rede de forma discreta.
-- Os dados brutos são gerados por `services/mock/*.mock.ts` a partir de seeds determinísticos, para
-  que o dashboard abra sempre com números coerentes.
-- Erros esperados (registro inexistente, validação, conflito) são lançados como exceções de domínio
-  e capturados pelos hooks, que exibem um toast e mantêm a interface consistente.
-- Nenhum serviço retorna `any`: todas as respostas são tipadas pelas interfaces de domínio.
-- Alguns serviços retornam **views** — tipos derivados que já trazem dados agregados, como
-  `EnrollmentView` (com nome do aluno, plano e situação calculada) — evitando que a interface precise
-  cruzar coleções.
+- Each domain has a service (`services/api/*.service.ts`) with async operations returning `Promise`,
+  lightly simulating network latency.
+- Raw data is generated by `services/mock/*.mock.ts` from deterministic seeds, so the dashboard always
+  opens with coherent numbers.
+- Expected errors (missing record, validation, conflict) are thrown as domain exceptions and caught
+  by the hooks, which surface a toast and keep the UI consistent.
+- No service returns `any`: every response is typed by the domain interfaces.
+- Some services return **views** — derived types that already carry aggregated data, such as
+  `EnrollmentView` (with student name, plan and computed status) — sparing the UI from having to join
+  collections itself.
 
-## 9. Como funciona a persistência
+## 9. How persistence works
 
 ```text
 LocalStorage
-└── irondesk:database       → coleções (students, plans, enrollments, payments, ...)
-└── irondesk:theme          → preferência de tema (espelhada em settings.theme)
+└── irondesk:database       → collections (students, plans, enrollments, payments, ...)
+└── irondesk:theme          → theme preference (mirrored in settings.theme)
 ```
 
-- `services/storage/storage.service.ts` isola leitura/escrita, versionamento e recuperação de dados
-  corrompidos.
-- `services/storage/database.service.ts` expõe as coleções tipadas e garante que o seed seja gerado
-  apenas na primeira execução.
-- A escrita é serializada: alterações passam por um único ponto de gravação, então um formulário
-  nunca sobrescreve alterações de outra coleção.
-- Se o LocalStorage estiver indisponível ou o payload inválido, a aplicação regenera o seed em vez de
-  quebrar.
+- `services/storage/storage.service.ts` isolates reads/writes, versioning and recovery from corrupted
+  data.
+- `services/storage/database.service.ts` exposes the typed collections and guarantees the seed is
+  generated only on the first run.
+- Writes are serialized: changes go through a single write point, so one form never overwrites changes
+  from another collection.
+- If LocalStorage is unavailable or the payload is invalid, the app regenerates the seed instead of
+  breaking.
 
-## 10. Como restaurar os dados demonstrativos
+## 10. Restoring the demo data
 
-Na aplicação: **Configurações → Restaurar dados de demonstração**. A ação pede confirmação e
-recria todas as coleções com o seed original, mantendo apenas a preferência de tema.
+In the app: **Settings → Restore demo data**. The action asks for confirmation and recreates every
+collection from the original seed, keeping only the theme preference.
 
-Via console do navegador:
+From the browser console:
 
 ```js
 localStorage.removeItem('irondesk:database');
 location.reload();
 ```
 
-## 11. Limitações da versão DEMO
+## 11. DEMO version limitations
 
-- Não há backend: os dados vivem no navegador e não são compartilhados entre dispositivos.
-- Não há autenticação real; o usuário exibido na topbar é fictício e faz parte do cenário de
-  demonstração.
-- **Não há cobranças reais.** Nenhum valor é processado, transferido ou conciliado, e nenhum dado de
-  cartão, conta ou documento financeiro sensível é coletado ou armazenado.
-- Integrações listadas na tela de Integrações são apenas estado local: não há chamadas a gateways,
-  catracas ou provedores de mensagem.
-- Relatórios são calculados sobre o conjunto demonstrativo e não substituem contabilidade oficial.
-- Upload de arquivos (fotos de avaliação, contratos digitalizados) não está implementado.
+- There is no backend: data lives in the browser and is not shared across devices.
+- There is no real authentication; the user shown in the topbar is fictional and part of the demo
+  scenario.
+- **There are no real charges.** No amount is processed, transferred or reconciled, and no card,
+  account or sensitive financial data is collected or stored.
+- The integrations listed on the Integrations screen are local state only: no calls are made to
+  gateways, turnstiles or messaging providers.
+- Reports are computed over the demo dataset and do not replace official accounting.
+- File uploads (assessment photos, scanned contracts) are not implemented.
 
-## 12. O que seria necessário para produção
+## 12. What production would require
 
-**Backend e dados**
-- API REST (ou GraphQL) mantendo os contratos já definidos em `services/api`, com autenticação por
-  token e paginação real.
-- Banco relacional (PostgreSQL com Prisma, por exemplo, ou MySQL) com migrações versionadas,
-  índices por academia e isolamento multi-tenant.
-- Fila/worker para tarefas assíncronas: geração de cobranças, lembretes, fechamento mensal.
+**Backend and data**
+- A REST (or GraphQL) API keeping the contracts already defined in `services/api`, with token
+  authentication and real pagination.
+- A relational database (PostgreSQL with Prisma, for example, or MySQL) with versioned migrations,
+  indexes per gym and multi-tenant isolation.
+- A queue/worker for async tasks: charge generation, reminders, monthly close.
 
-**Segurança e privacidade**
-- Autenticação (e-mail/senha com hash forte, ou OAuth) e sessões com refresh token.
-- RBAC por função — administrador, gerente, recepção, professor — restringindo rotas e operações.
-- Proteção de dados pessoais conforme a **LGPD**: base legal, consentimento, minimização,
-  criptografia em trânsito e em repouso, registro de acesso e trilha de auditoria, política de
-  retenção e canal para exclusão/portabilidade.
-- Segurança de pagamentos: nunca armazenar dados de cartão; usar tokenização do gateway e
-  conformidade PCI-DSS quando aplicável.
+**Security and privacy**
+- Authentication (email/password with strong hashing, or OAuth) and sessions with refresh tokens.
+- Role-based access control — administrator, manager, front desk, trainer — restricting routes and
+  operations.
+- Personal data protection under Brazil's **LGPD**: legal basis, consent, minimization, encryption in
+  transit and at rest, access logging and audit trail, retention policy and a channel for erasure and
+  portability.
+- Payment security: never store card data; use gateway tokenization and PCI-DSS compliance where
+  applicable.
 
-**Integrações**
-- Gateway de pagamento (Pix, boleto, cartão) com **webhooks** idempotentes para confirmar
-  pagamentos, estornos e falhas.
-- Catracas e equipamentos físicos (leitor biométrico, tag RFID) para liberar acesso conforme a
-  situação da matrícula.
-- E-mail transacional e WhatsApp para lembretes de vencimento, renovação e aniversário.
-- Exportação para contabilidade e conciliação bancária.
+**Integrations**
+- A payment gateway (Pix, bank slip, card) with idempotent **webhooks** to confirm payments, refunds
+  and failures.
+- Turnstiles and physical hardware (biometric reader, RFID tag) to grant access based on enrollment
+  status.
+- Transactional email and WhatsApp for due-date, renewal and birthday reminders.
+- Accounting exports and bank reconciliation.
 
-**Operação**
-- Backup automático com teste de restauração, retenção definida e cópia fora da região principal.
-- Monitoramento de erros, métricas de negócio, logs estruturados e alertas de indisponibilidade.
-- Infraestrutura com CI/CD, ambientes de staging e produção, HTTPS obrigatório e variáveis de
-  ambiente para segredos.
+**Operations**
+- Automated backups with restore drills, a defined retention policy and off-region copies.
+- Error monitoring, business metrics, structured logs and availability alerts.
+- Infrastructure with CI/CD, staging and production environments, mandatory HTTPS and environment
+  variables for secrets.
 
-**Produto**
-- Aplicativo mobile (aluno) para ficha de treino, check-in e evolução.
-- Portal do aluno com histórico de pagamentos e avaliações.
+**Product**
+- A mobile app (student) for workout programs, check-in and progress.
+- A student portal with payment and assessment history.
 
-## 13. Possibilidades de integração
+## 13. Integration possibilities
 
-- **Gateways de pagamento**: Pix, boleto e cartão recorrente.
-- **Controle de acesso**: catracas, fechaduras eletrônicas e leitores de biometria/RFID.
-- **Comunicação**: e-mail transacional e WhatsApp Business.
-- **Contabilidade**: exportação de receitas e despesas em formato aceito pelo escritório contábil.
-- **Wearables**: importação de treinos e frequência cardíaca do aluno.
-- **Calendário**: sincronização de avaliações e vencimentos.
+- **Payment gateways**: Pix, bank slip and recurring card.
+- **Access control**: turnstiles, electronic locks and biometric/RFID readers.
+- **Communication**: transactional email and WhatsApp Business.
+- **Accounting**: income and expense exports in a format the accounting firm accepts.
+- **Wearables**: import of student workouts and heart rate.
+- **Calendar**: synchronization of assessments and due dates.
 
 ## 14. Roadmap
 
-- [ ] Autenticação e RBAC
-- [ ] Backend REST + PostgreSQL com migrações
-- [ ] Cobrança recorrente com webhooks e conciliação
-- [ ] Portal e aplicativo do aluno
-- [ ] Avaliação física com fotos e comparativo visual de evolução
-- [ ] Metas e acompanhamento de progressão de carga por exercício
-- [ ] Automação de retenção (alerta de evasão por queda de frequência)
-- [ ] Multi-unidade com consolidação de indicadores
-- [ ] Testes automatizados de regras de negócio e E2E das jornadas críticas
+- [ ] Authentication and RBAC
+- [ ] REST backend + PostgreSQL with migrations
+- [ ] Recurring billing with webhooks and reconciliation
+- [ ] Student portal and mobile app
+- [ ] Physical assessment with photos and visual progress comparison
+- [ ] Goals and load progression tracking per exercise
+- [ ] Retention automation (churn alert on attendance drop)
+- [ ] Multi-location with consolidated indicators
+- [ ] Automated business-rule tests and E2E coverage of critical journeys
 
-## 15. Como contribuir
+## 15. Contributing
 
-A branch `main` é protegida: nenhuma alteração entra por push direto, tudo passa por pull request.
+The `main` branch is protected: nothing gets in through a direct push, everything goes through a pull
+request.
 
-1. Leia o [CONTRIBUTING.md](./CONTRIBUTING.md).
-2. Abra uma issue usando um dos templates (bug ou sugestão de funcionalidade).
-3. Crie a branch a partir da `main` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`).
-4. Garanta `npm run typecheck`, `npm run build` e o limite de 150 linhas por arquivo.
-5. Abra o pull request — o template e a CI entram automaticamente.
+1. Read [CONTRIBUTING.md](./CONTRIBUTING.md).
+2. Open an issue using one of the templates (bug or feature request).
+3. Branch off `main` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`).
+4. Make sure `npm run typecheck`, `npm run build` and the 150-line-per-file limit pass.
+5. Open the pull request — the template and CI kick in automatically.
 
-Dúvidas e ideias abertas: [Discussions](https://github.com/kaique-albuquerque/irondesk/discussions).
-Falhas de segurança: siga o [SECURITY.md](./SECURITY.md), não abra issue pública.
+Questions and open ideas: [Discussions](https://github.com/kaique-albuquerque/irondesk/discussions).
+Security issues: follow [SECURITY.md](./SECURITY.md), do not open a public issue.
 
-## 16. Autor
+## 16. Author
 
-Projeto de portfólio desenvolvido por **Kaique Dias**.
+Portfolio project built by **Kaique Dias**.
 
-Código aberto para estudo e referência.
+Open source for study and reference.
 
 ---
 
-> **Aviso:** o IronDesk é um sistema demonstrativo. Não realiza cobranças reais nem armazena
-> informações financeiras sensíveis. Todos os alunos, colaboradores, valores e integrações exibidos
-> são fictícios.
+> **Disclaimer:** IronDesk is a demo system. It does not process real charges or store sensitive
+> financial information. Every student, staff member, amount and integration shown is fictional.

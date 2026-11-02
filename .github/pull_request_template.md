@@ -1,37 +1,37 @@
-## O que muda
+## What changes
 
-<!-- Descreva a mudança em uma ou duas frases. Se resolve uma issue, referencie: closes #12 -->
+<!-- Describe the change in one or two sentences. If it resolves an issue, reference it: closes #12 -->
 
-## Por que
+## Why
 
-<!-- Qual problema isso resolve? Qual decisão de produto ou técnica está por trás? -->
+<!-- What problem does this solve? Which product or technical decision is behind it? -->
 
-## Como testar
+## How to test
 
-<!-- Passos para revisar a mudança localmente -->
+<!-- Steps to review the change locally -->
 
 1.
 2.
 
-## Tipo de mudança
+## Type of change
 
-- [ ] Correção de bug
-- [ ] Nova funcionalidade
-- [ ] Refatoração sem mudança de comportamento
-- [ ] Documentação
-- [ ] Configuração, dependências ou build
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Refactor with no behavior change
+- [ ] Documentation
+- [ ] Config, dependencies or build
 
 ## Checklist
 
-- [ ] `npm run typecheck` passa sem erros
-- [ ] `npm run build` conclui com sucesso
-- [ ] Nenhum arquivo de código passa de **150 linhas**
-- [ ] Nenhum `any` explícito e nenhum acesso direto ao `LocalStorage` fora de `services/storage`
-- [ ] Console do navegador limpo no fluxo alterado
-- [ ] Testado em tema escuro e claro
-- [ ] Layout verificado em tela estreita (mobile)
-- [ ] Documentação atualizada quando o comportamento público mudou
+- [ ] `npm run typecheck` passes with no errors
+- [ ] `npm run build` completes successfully
+- [ ] No code file exceeds **150 lines**
+- [ ] No explicit `any` and no direct `LocalStorage` access outside `services/storage`
+- [ ] Browser console is clean in the changed flow
+- [ ] Tested in dark and light themes
+- [ ] Layout checked on a narrow (mobile) screen
+- [ ] Documentation updated when public behavior changed
 
-## Capturas
+## Screenshots
 
-<!-- Antes/depois, quando a mudança for visual. Remova esta seção se não se aplicar. -->
+<!-- Before/after, when the change is visual. Remove this section if it does not apply. -->

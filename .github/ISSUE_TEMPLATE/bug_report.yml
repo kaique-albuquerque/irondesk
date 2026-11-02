@@ -1,90 +1,90 @@
 name: Bug
-description: Reportar um comportamento inesperado no IronDesk
+description: Report unexpected behavior in IronDesk
 title: 'bug: '
 labels: ['bug', 'triage']
 body:
   - type: markdown
     attributes:
       value: |
-        Obrigado por reportar. Antes de continuar, confirme que você está na versão mais recente
-        da branch `main` e que o problema não está listado nas issues existentes.
+        Thanks for reporting. Before continuing, confirm you are on the latest version of the
+        `main` branch and that the problem is not already listed in the existing issues.
 
-        Encontrou uma **vulnerabilidade de segurança**? Não use este formulário — veja
+        Found a **security vulnerability**? Do not use this form — see
         [SECURITY.md](https://github.com/kaique-albuquerque/irondesk/blob/main/SECURITY.md).
 
   - type: textarea
-    id: descricao
+    id: description
     attributes:
-      label: O que aconteceu
-      description: Descreva o comportamento observado e o que era esperado.
-      placeholder: Ao clicar em "Renovar" na tela de Matrículas, a lista não atualiza...
+      label: What happened
+      description: Describe the observed behavior and what was expected.
+      placeholder: When clicking "Renew" on the Enrollments screen, the list does not refresh...
     validations:
       required: true
 
   - type: textarea
-    id: passos
+    id: steps
     attributes:
-      label: Passos para reproduzir
+      label: Steps to reproduce
       value: |
-        1. Acesse '...'
-        2. Clique em '...'
-        3. Veja o erro
+        1. Go to '...'
+        2. Click on '...'
+        3. See the error
     validations:
       required: true
 
   - type: dropdown
-    id: modulo
+    id: module
     attributes:
-      label: Módulo afetado
+      label: Affected module
       options:
         - Dashboard
-        - Alunos
-        - Planos
-        - Matrículas
-        - Frequência
-        - Treinos
-        - Avaliações
-        - Financeiro
-        - Relatórios
-        - Equipe
-        - Integrações
-        - Configurações
-        - Navegação / layout / tema
-        - Outro
+        - Students
+        - Plans
+        - Enrollments
+        - Attendance
+        - Workouts
+        - Assessments
+        - Finance
+        - Reports
+        - Team
+        - Integrations
+        - Settings
+        - Navigation / layout / theme
+        - Other
     validations:
       required: true
 
   - type: textarea
     id: console
     attributes:
-      label: Erros no console
-      description: Cole o conteúdo do console do navegador, se houver.
+      label: Console errors
+      description: Paste the browser console output, if any.
       render: shell
 
   - type: input
-    id: navegador
+    id: browser
     attributes:
-      label: Navegador e sistema
+      label: Browser and operating system
       placeholder: Chrome 138 / Windows 11
     validations:
       required: true
 
   - type: dropdown
-    id: persistencia
+    id: persistence
     attributes:
-      label: O problema desaparece ao restaurar os dados de demonstração?
-      description: Configurações → Restaurar dados de demonstração
+      label: Does the problem go away after restoring the demo data?
+      description: Settings → Restore demo data
       options:
-        - 'Sim'
-        - 'Não'
-        - 'Não testei'
+        - 'Yes'
+        - 'No'
+        - 'I did not test it'
     validations:
       required: false
 
   - type: textarea
-    id: contexto
+    id: context
     attributes:
-      label: Contexto adicional
-      description: Prints, gravações de tela, observações.
+      label: Additional context
+      description: Screenshots, screen recordings, notes.
     validations:
       required: false

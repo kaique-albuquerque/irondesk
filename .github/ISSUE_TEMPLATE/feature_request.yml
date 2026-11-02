@@ -1,78 +1,78 @@
-name: Sugestão de funcionalidade
-description: Propor uma melhoria para o IronDesk
+name: Feature request
+description: Propose an improvement to IronDesk
 title: 'feat: '
 labels: ['enhancement', 'triage']
 body:
   - type: markdown
     attributes:
       value: |
-        Antes de propor, verifique o
-        [README](https://github.com/kaique-albuquerque/irondesk#readme) e o
+        Before proposing, check the
+        [README](https://github.com/kaique-albuquerque/irondesk#readme) and the
         [roadmap](https://github.com/kaique-albuquerque/irondesk#14-roadmap).
-        O IronDesk é uma demonstração sem backend — propostas que dependam de servidor, banco de
-        dados ou cobrança real estão fora do escopo deste repositório.
+        IronDesk is a demo with no backend — proposals that depend on a server, database or real
+        billing are outside the scope of this repository.
 
   - type: textarea
-    id: problema
+    id: problem
     attributes:
-      label: Qual problema isso resolve
-      description: Descreva a dificuldade do dia a dia da academia, não a solução.
-      placeholder: Ao fim do mês preciso consolidar os recebimentos em outro sistema porque...
+      label: What problem does this solve
+      description: Describe the gym's day-to-day difficulty, not the solution.
+      placeholder: At the end of the month I have to consolidate receipts in another system because...
     validations:
       required: true
 
   - type: textarea
-    id: proposta
+    id: proposal
     attributes:
-      label: Solução proposta
-      description: Como o IronDesk deveria se comportar.
+      label: Proposed solution
+      description: How IronDesk should behave.
     validations:
       required: true
 
   - type: textarea
-    id: alternativas
+    id: alternatives
     attributes:
-      label: Alternativas consideradas
+      label: Alternatives considered
     validations:
       required: false
 
   - type: dropdown
-    id: modulo
+    id: module
     attributes:
-      label: Módulo relacionado
+      label: Related module
       options:
         - Dashboard
-        - Alunos
-        - Planos
-        - Matrículas
-        - Frequência
-        - Treinos
-        - Avaliações
-        - Financeiro
-        - Relatórios
-        - Equipe
-        - Integrações
-        - Configurações
+        - Students
+        - Plans
+        - Enrollments
+        - Attendance
+        - Workouts
+        - Assessments
+        - Finance
+        - Reports
+        - Team
+        - Integrations
+        - Settings
         - Design system
-        - Outro
+        - Other
     validations:
       required: true
 
   - type: dropdown
-    id: escopo
+    id: scope
     attributes:
-      label: Isso cabe na versão demonstrativa?
+      label: Does this fit the demo version?
       options:
-        - 'Sim — apenas front end com dados locais'
-        - 'Não — precisaria de backend/API real'
-        - 'Não sei'
+        - 'Yes — front end only with local data'
+        - 'No — it would need a real backend/API'
+        - 'I do not know'
     validations:
       required: true
 
   - type: textarea
-    id: referencias
+    id: references
     attributes:
-      label: Referências
-      description: Links, imagens ou produtos que fazem algo parecido.
+      label: References
+      description: Links, images or products that do something similar.
     validations:
       required: false

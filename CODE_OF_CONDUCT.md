@@ -1,43 +1,45 @@
-# Código de Conduta
+# Code of Conduct
 
-## Nosso compromisso
+[Português](./CODE_OF_CONDUCT.pt-BR.md) | **English**
 
-Este é um projeto de portfólio aberto a contribuições. Queremos que qualquer pessoa possa participar
-— independente de nível de experiência, formação, identidade, aparência, deficiência, etnia,
-religião, orientação sexual ou nacionalidade — sem constrangimento.
+## Our pledge
 
-## Comportamentos esperados
+This is a portfolio project open to contributions. We want anyone to be able to take part —
+regardless of experience level, education, identity, appearance, disability, ethnicity, religion,
+sexual orientation or nationality — without discomfort.
 
-- Tratar todas as pessoas com respeito e assumir boa-fé nas mensagens.
-- Dar e receber crítica técnica com foco no código, não na pessoa.
-- Explicar o raciocínio por trás de uma sugestão, com links quando ajudar.
-- Aceitar que o mantenedor tem a palavra final sobre escopo e prioridade.
-- Ser paciente: o projeto é mantido por uma pessoa, em tempo livre.
+## Expected behavior
 
-## Comportamentos inaceitáveis
+- Treat everyone with respect and assume good faith in messages.
+- Give and receive technical criticism focused on the code, not the person.
+- Explain the reasoning behind a suggestion, with links when it helps.
+- Accept that the maintainer has the final word on scope and priority.
+- Be patient: the project is maintained by one person in their spare time.
 
-- Ataques pessoais, insultos, provocações ou comentários depreciativos.
-- Assédio de qualquer natureza, público ou privado.
-- Comentários sobre aparência, identidade ou características pessoais.
-- Divulgação de informação privada de terceiros sem permissão.
-- Conteúdo sexual, violento ou discriminatório.
-- Desrespeito deliberado ao escopo declarado do projeto após uma decisão do mantenedor.
+## Unacceptable behavior
 
-## Aplicação
+- Personal attacks, insults, provocation or derogatory comments.
+- Harassment of any kind, public or private.
+- Comments about appearance, identity or personal characteristics.
+- Disclosing someone else's private information without permission.
+- Sexual, violent or discriminatory content.
+- Deliberate disregard for the project's stated scope after a maintainer decision.
 
-Comportamentos inaceitáveis podem ser reportados em **kaique.g.dias14@gmail.com**. Todas as
-mensagens serão lidas e tratadas com confidencialidade.
+## Enforcement
 
-Medidas possíveis, conforme a gravidade:
+Unacceptable behavior can be reported to **kaique.g.dias14@gmail.com**. Every message will be read and
+handled confidentially.
 
-1. Aviso privado com pedido de ajuste.
-2. Remoção do comentário ou do conteúdo.
-3. Bloqueio temporário de participação em issues e pull requests.
-4. Banimento do repositório.
+Possible measures, depending on severity:
 
-O mantenedor se reserva o direito de remover contribuições que violem este documento.
+1. Private warning with a request to adjust.
+2. Removal of the comment or content.
+3. Temporary block from participating in issues and pull requests.
+4. Ban from the repository.
 
-## Escopo
+The maintainer reserves the right to remove contributions that violate this document.
 
-Este código se aplica a issues, pull requests, comentários de revisão, discussões e qualquer outro
-espaço do repositório — além de interações públicas quando alguém está representando o projeto.
+## Scope
+
+This code applies to issues, pull requests, review comments, discussions and any other space in the
+repository — as well as public interactions when someone is representing the project.
