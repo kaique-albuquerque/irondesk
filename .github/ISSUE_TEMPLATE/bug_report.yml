@@ -1,0 +1,90 @@
+name: Bug
+description: Reportar um comportamento inesperado no IronDesk
+title: 'bug: '
+labels: ['bug', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar. Antes de continuar, confirme que você está na versão mais recente
+        da branch `main` e que o problema não está listado nas issues existentes.
+
+        Encontrou uma **vulnerabilidade de segurança**? Não use este formulário — veja
+        [SECURITY.md](https://github.com/kaique-albuquerque/irondesk/blob/main/SECURITY.md).
+
+  - type: textarea
+    id: descricao
+    attributes:
+      label: O que aconteceu
+      description: Descreva o comportamento observado e o que era esperado.
+      placeholder: Ao clicar em "Renovar" na tela de Matrículas, a lista não atualiza...
+    validations:
+      required: true
+
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+      value: |
+        1. Acesse '...'
+        2. Clique em '...'
+        3. Veja o erro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: Módulo afetado
+      options:
+        - Dashboard
+        - Alunos
+        - Planos
+        - Matrículas
+        - Frequência
+        - Treinos
+        - Avaliações
+        - Financeiro
+        - Relatórios
+        - Equipe
+        - Integrações
+        - Configurações
+        - Navegação / layout / tema
+        - Outro
+    validations:
+      required: true
+
+  - type: textarea
+    id: console
+    attributes:
+      label: Erros no console
+      description: Cole o conteúdo do console do navegador, se houver.
+      render: shell
+
+  - type: input
+    id: navegador
+    attributes:
+      label: Navegador e sistema
+      placeholder: Chrome 138 / Windows 11
+    validations:
+      required: true
+
+  - type: dropdown
+    id: persistencia
+    attributes:
+      label: O problema desaparece ao restaurar os dados de demonstração?
+      description: Configurações → Restaurar dados de demonstração
+      options:
+        - 'Sim'
+        - 'Não'
+        - 'Não testei'
+    validations:
+      required: false
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto adicional
+      description: Prints, gravações de tela, observações.
+    validations:
+      required: false

@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Typecheck, limite de linhas e build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar tipos
+        run: npm run typecheck
+
+      - name: Verificar limite de 150 linhas por arquivo
+        run: |
+          offenders=$(find src -type f \( -name '*.ts' -o -name '*.tsx' \) -exec wc -l {} + \
+            | awk '$2 != "total" && $1 > 150 { printf "  %s (%s linhas)\n", $2, $1 }')
+          if [ -n "$offenders" ]; then
+            echo "Arquivos acima de 150 linhas:"
+            echo "$offenders"
+            exit 1
+          fi
+          echo "Nenhum arquivo acima de 150 linhas."
+
+      - name: Verificar ausência de any explícito
+        run: |
+          if grep -rnE '(:[[:space:]]*any\b|<any>|as any\b)' src --include='*.ts' --include='*.tsx'; then
+            echo ""
+            echo "Encontrado uso de 'any'. Use tipos de domínio ou 'unknown'."
+            exit 1
+          fi
+          echo "Nenhum 'any' explícito."
+
+      - name: Build de produção
+        run: npm run build

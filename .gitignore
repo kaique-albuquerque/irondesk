@@ -21,3 +21,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Artefatos locais de ferramentas de assistência (não fazem parte do produto)
+.github/skills/
+.github/instructions/
+.github/workflows/release.yml

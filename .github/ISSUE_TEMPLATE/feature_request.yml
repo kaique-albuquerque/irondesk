@@ -1,0 +1,78 @@
+name: Sugestão de funcionalidade
+description: Propor uma melhoria para o IronDesk
+title: 'feat: '
+labels: ['enhancement', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de propor, verifique o
+        [README](https://github.com/kaique-albuquerque/irondesk#readme) e o
+        [roadmap](https://github.com/kaique-albuquerque/irondesk#14-roadmap).
+        O IronDesk é uma demonstração sem backend — propostas que dependam de servidor, banco de
+        dados ou cobrança real estão fora do escopo deste repositório.
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual problema isso resolve
+      description: Descreva a dificuldade do dia a dia da academia, não a solução.
+      placeholder: Ao fim do mês preciso consolidar os recebimentos em outro sistema porque...
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposta
+    attributes:
+      label: Solução proposta
+      description: Como o IronDesk deveria se comportar.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternativas
+    attributes:
+      label: Alternativas consideradas
+    validations:
+      required: false
+
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: Módulo relacionado
+      options:
+        - Dashboard
+        - Alunos
+        - Planos
+        - Matrículas
+        - Frequência
+        - Treinos
+        - Avaliações
+        - Financeiro
+        - Relatórios
+        - Equipe
+        - Integrações
+        - Configurações
+        - Design system
+        - Outro
+    validations:
+      required: true
+
+  - type: dropdown
+    id: escopo
+    attributes:
+      label: Isso cabe na versão demonstrativa?
+      options:
+        - 'Sim — apenas front end com dados locais'
+        - 'Não — precisaria de backend/API real'
+        - 'Não sei'
+    validations:
+      required: true
+
+  - type: textarea
+    id: referencias
+    attributes:
+      label: Referências
+      description: Links, imagens ou produtos que fazem algo parecido.
+    validations:
+      required: false

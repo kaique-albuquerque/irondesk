@@ -270,7 +270,20 @@ location.reload();
 - [ ] Multi-unidade com consolidação de indicadores
 - [ ] Testes automatizados de regras de negócio e E2E das jornadas críticas
 
-## 15. Autor
+## 15. Como contribuir
+
+A branch `main` é protegida: nenhuma alteração entra por push direto, tudo passa por pull request.
+
+1. Leia o [CONTRIBUTING.md](./CONTRIBUTING.md).
+2. Abra uma issue usando um dos templates (bug ou sugestão de funcionalidade).
+3. Crie a branch a partir da `main` (`feat/`, `fix/`, `docs/`, `refactor/`, `chore/`).
+4. Garanta `npm run typecheck`, `npm run build` e o limite de 150 linhas por arquivo.
+5. Abra o pull request — o template e a CI entram automaticamente.
+
+Dúvidas e ideias abertas: [Discussions](https://github.com/kaique-albuquerque/irondesk/discussions).
+Falhas de segurança: siga o [SECURITY.md](./SECURITY.md), não abra issue pública.
+
+## 16. Autor
 
 Projeto de portfólio desenvolvido por **Kaique Dias**.
 
